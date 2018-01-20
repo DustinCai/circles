@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :user_circles
-  has_many :circle_groups, through: :user_circles
+  has_many :circles, through: :user_circles
 end

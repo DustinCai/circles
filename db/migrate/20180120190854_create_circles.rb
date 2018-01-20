@@ -2,7 +2,7 @@ class CreateCircles < ActiveRecord::Migration[5.0]
   def change
     create_table :circles do |t|
       t.string :name
-      t.string :subject
+      t.integer :subject
       t.integer :status
       t.integer :size
 
