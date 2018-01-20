@@ -1,1 +1,11 @@
+<!--Variables:
+        @user.circles
+    -->
+
 <%= @user.circles.first.name %>
+
+<% @user.circles.each do |circle| %>
+    <p><%= circle.name %></p>
+<% end %>
+
+
