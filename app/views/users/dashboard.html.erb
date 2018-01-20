@@ -5,6 +5,6 @@
 <%= @user.circles.first.name %>
 
 <% @user.circles.each do |circle| %>
-    <p><%= circle.name %></p>
+    <%= link_to "circle", circles_path(circle) %>
 <% end %>
 
