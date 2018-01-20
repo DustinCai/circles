@@ -21,6 +21,25 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'json'
+
+# Bootstrap
+gem 'bootstrap-sass'
+# JQuery
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
+# Devise for authentication
+gem 'devise'
+
+# Gon for passing variable to client js
+gem 'gon'
+
+# Date ordering
+gem 'groupdate'
+
+# Filterrific for filtering
+gem 'filterrific' # :github => 'ayaman/filterrific'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -34,6 +53,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+#
+gem 'redis'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
