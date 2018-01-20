@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180120191343) do
+ActiveRecord::Schema.define(version: 20180120222045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20180120191343) do
     t.integer  "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "type"
+    t.datetime "time"
+    t.integer  "circle_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["circle_id"], name: "index_events_on_circle_id", using: :btree
   end
 
   create_table "user_circles", force: :cascade do |t|
