@@ -15,8 +15,7 @@ Rails.application.routes.draw do
     resources :events, only: [:create, :destroy, :update]
   end
 
-  resources :events do
-  end
+  resources :events
 
   authenticated :user do
     root 'users#dashboard'

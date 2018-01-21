@@ -1,0 +1,62 @@
+<body>
+
+<div class="container">
+  <h2>Search and Join Circle</h2>
+  <p>Search by Circle ID:</p>
+  <form class="form-inline" action="/action_page.php">
+    <div class="form-group">
+      <label class="sr-only" for="Subject">Subject:</label>
+      <input type="Subject" id="Subject" placeholder="Enter Circle ID"  name="Circle">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  <br>
+  <p>Search by Circle Name:</p>
+  <form class="form-inline" action="/action_page.php">
+    <div class="form-group">
+      <label class="sr-only" for="Subject">Subject:</label>
+      <input type="Subject" id="Subject" placeholder="Enter Circle name"  name="Circle">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+   <br>
+   <br>
+   <p>Search by Subject:</p>
+   <form class="form-inline" action="/action_page.php">
+   	<div class="form-group">
+		<select name="subject" id="subject" onchange="changeSubject(this)">
+      <!--
+			<option value="Intro to C++">Intro to C++</option>
+			<option value="Intro to Java">Intro to Java</option>
+			<option value="Intro to Python">Intro to Python</option>
+			<option value="Intro to WebDev">Intro to WebDev</option>
+			<option value="Intro to PS">Intro to PS</option>
+			<option value="Intro to UNIX/LINUX">Intro to UNIX/LINUX</option>
+
+			<option value="Swift">Swift</option>
+			<option value="React">React</option>
+			<option value="Node.js">Node.js</option>
+
+			<option value="Linear Algebra">Linear Algebra</option>
+			<option value="Discrete Math">Discrete Math</option>
+			<option value="Statistics">Statistics</option>
+			<option value="Calculus">Calculus</option>
+
+			<option value="Spanish">Spanish</option>
+			<option value="Japanese">Japanese</option>
+			<option value="French">French</option>
+
+			<option value="Microbiology">Microbiology</option>
+			<option value="Chemistry">Chemistry</option>
+			<option value="Psychology">Psychology</option>
+			<option value="Western History">Western History</option>
+      -->
+
+
+		</select>
+	</div>
+    <button type="submit" class="btn btn-default">Submit</button>
+
+</div>
+
+</body>
+</html>
