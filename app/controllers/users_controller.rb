@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, :get_user
 
   def dashboard
+    @circles = current_user.circles
   end
 
   def leave_circle

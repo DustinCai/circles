@@ -63,6 +63,9 @@ class CirclesController < ApplicationController
       redirect_back fallback_location: root_path and return
     end
 
+    if current_circle.size > current_circle.users.length and !current_circle.users.include? current_user
+      current_circle.users << current_user
+    end
     return current_circle.users.include? current_user
   end
 

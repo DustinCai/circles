@@ -1,10 +1,65 @@
-<h1>Dashboard</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<h3>My Circles<h3>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<% @user.circles.each do |circle| %>
-  <p><%= link_to circle.name, circle_path(circle) %></p>
-<% end %>
+    <title>My Circles</title>
+  </head>
+  <body>
+    <!--<h1>My Circles</h1>-->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-<p><%= link_to "Create Circle", new_circle_path %></p>
-<p><%= link_to "Search for Circles", search_circles_path %></p>
+  <div class="container">
+  <br>
+  <br>
+  <h1 style="text-align:left">Hi, <%= @user.first_name.upcase_first %>!</h1>
+  <h2>My Circles</h2>
+  <br>
+  <div align="left">
+      <%= link_to "+ Create A Circle", new_circle_path, class: "btn btn-success" %>
+  </div>
+  <br>
+  <br>
+  <% count = 0 %>
+  <% @circles.each do |circle| %>
+    <% if count % 2 == 0 %>
+    <div class="row">
+    <% end %>
+      <div class="col-sm-6" style="text-align: center">
+        <!--<h3>Column 1</h3>-->
+        <%= link_to (image_tag "bluecircle.png", alt:"bluecircle", size: "300x300"), circle_path(circle) %>
+        <p><%=circle.name %></p>
+        <p><i><%= Circle.get_subject circle.subject %></i></p>
+        <!-- <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p> -->
+      </div>
+    <% count += 1 %>
+    <% if count % 2 == 0 %>
+    </div>
+    <% end %>
+  <% end %>
+
+
+<!-- <div class="container">
+<h2>My Circles</h2>
+<img class="img-responsive" src="bluecircle.png" alt="bluecircle" width="300" height="300">
+<p> Team Square</p>
+</div> -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

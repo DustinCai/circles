@@ -42,11 +42,18 @@ class Circle < ApplicationRecord
   }
 
   def self.options_for_subject
-    [["Math", 1], ["Biology", 2], ["Chemistry", 3], ["Physics", 4]]
+    subjects = ["Intro to C++", "Intro to Java", "Intro to Python", "Intro to WebDev",
+                "Intro to PS", "Intro to UNIX", "Swift", "React", "Node.js",
+                "Linear Algebra", "Discrete Mathematics", "Statistics", "Calculus",
+                "ESL", "Spanish", "Japanese", "French",
+                "Biology", "Chemistry", "Physics", "Psychology", "Sociology",
+                "Western History", "World History", "Art History"]
+    subjects.sort!
+    subjects.map.with_index {|x, i| [x, i + 1] }
   end
 
   def self.get_subject(val)
-    options_for_subject[val.to_i + 1][1]
+    options_for_subject[val.to_i + 1][0]
   end
 
 end

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20180121095607) do
 
   create_table "circles", force: :cascade do |t|
     t.string   "name"
-    t.integer  "subject"
+    t.string   "subject"
     t.integer  "status"
     t.integer  "size"
     t.datetime "created_at", null: false

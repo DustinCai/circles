@@ -1,24 +1,28 @@
-<h1>Create a circle!</h1>
+<div style="text-align: center">
+    <h1>Create a circle!</h1>
 
-<%= form_for @circle do |f| %>
-  <p>What is the name of your new circle?</p>
-  <p><%= f.text_field :name %></p>
-  <br \>
+    <%= form_for @circle, html: {style: "text-align: center"}  do |f| %>
+      <p>What is the name of your new circle?</p>
+      <p><%= f.text_field :name %></p>
+      <br \>
 
-  <p>What subject will you be studying?</p>
-  <p><%= f.select :subject, options_for_select(Circle.options_for_subject) %></p>
-  <br \>
+      <p>What subject will you be studying?</p>
+      <p><%= f.select :subject, options_for_select(Circle.options_for_subject), class: "form-control"%></p>
+      <br \>
 
-  <p>What is the maximum number of people in the circle? (optional)</p>
-  <p><%= f.text_field :size %></p>
-  <br \>
+      <p>What is the maximum number of people in the circle? (optional)</p>
+      <p><%= f.text_field :size %></p>
+      <br \>
 
-  <p>Do you want to make the circle public?</p>
-  <p><%= f.radio_button :status, 0 %>
-  <%= f.label :status, 'Yes, make it public.', :value => 0 %></p>
-  <p><%= f.radio_button :status, 1 %>
-  <%= f.label :status, 'No, make it invite-only.', :value => 1 %></p>
-  <br \>
+      <p>Do you want to make the circle public?</p>
+      <p><%= f.radio_button :status, 0 %>
+      <%= f.label :status, 'Yes, make it public.', :value => 0 %></p>
+      <p><%= f.radio_button :status, 1 %>
+      <%= f.label :status, 'No, make it invite-only.', :value => 1 %></p>
 
-  <%= f.submit %>
-<% end %>
+      <%= f.submit class: "btn btn-primary", style: "font-size: 1em" %>
+
+    <% end %>
+
+    <%= link_to "Go Back", root_path, class: "btn btn-danger", style: "font-size: 1em; margin-top: 1em" %>
+</div>

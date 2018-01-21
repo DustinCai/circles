@@ -4,7 +4,6 @@
 	<title>CSS Cheat Sheet</title>
 	<link rel="stylesheet" type="text/css" href="css/circlestyle.css"> <!-- use css/style.css cause you have to specify the folder -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-">
 </head>
 <body>
 	<div class= "container">
@@ -22,13 +21,46 @@
           <h3><%= Event.get_event_type event.event_type %>: <%= event.title %></h3>
           <p><%= event.time.to_date %></p>
           <p><%= event.description %></p>
+          <%= link_to "Finished", circle_event_path(@circle, event), method: :delete %>
         </div>
       <% end %>
-		</div> 
+        <div class="event">
+            <h3 style="margin-bottom: -0.5em">New Event</h3>
+            <a style="text-align: center"><span class="glyphicon glyphicon-plus-sign" data-toggle="modal" data-target=".bd-example-modal-sm"></span></a>
+
+
+        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm">
+                      <div class="modal-content">
+                    <h3>Add Event</h3>
+                    <%= form_for [@circle, @new_event] do |f| %>
+                      <p><%= f.label :title %>
+                      <%= f.text_field :title, class: "form-control" %></p>
+
+                      <p><%= f.label :description %>
+                      <%= f.text_field :description, class: "form-control" %></p>
+
+                      <p><%= f.label :time, {}, {style: "display: block"}%>
+                      <%= f.date_select :time, {use_short_month: true}, class: "form-control small-field" %></p>
+
+                      <p><%= f.label :event_type %>
+                      <%= f.select :event_type, options_for_select(Event.options_for_type), {}, class: "form-control" %></p>
+
+                      <p style="margin-top: 1em"><%= f.submit class: "btn btn-primary" %></p>
+
+                    <% end %>
+                                    </div>
+                                      </div>
+        </div>
+
+        <!-- Small modal -->
+
+        </div>
+      </div> 
 
 		<!-- call grid somewhere here lmao -->
 		
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 5em">
   <h1></h1>
   <div class="row">
     <div class="col-md-4" style="background-color:lavender;">
@@ -49,11 +81,9 @@
           </ul>
 				</div>	
     </div>
-    <div class="col-md-8" style="background-color:lavenderblush;">
+    <div class="col-md-8" style="background-color:lavenderblush; padding: 0">
     <div class="p-box">
-			<h1>Hello
-            hello 
-            hello</h1>
+        <h1 style="text-align: center">This is a functional chat box, I swear</h1>
 		</div>
     </div>
 
@@ -89,7 +119,7 @@
 
 		</div>
 	-->
-
+<!--
 		<form class="my-form">
 			<div class="form-group">
 				<label>Name: </label>
@@ -106,25 +136,9 @@
 			<input type="button" name="submit" value="Submit">
 		</form>
 
-    <h3>Add Event</h3>
-    <%= form_for [@circle, @new_event] do |f| %>
-      <p><%= f.label :title %>
-      <%= f.text_field :title, class: "form-control" %></p>
-
-      <p><%= f.label :description %>
-      <%= f.text_field :description, class: "form-control" %></p>
-
-      <p>Date
-      <%= f.date_select :time %></p>
-
-      <p><%= f.label :event_type %>
-      <%= f.select :event_type, options_for_select(Event.options_for_type), {}, class: "form-control" %></p>
-
-      <p><%= f.submit  %></p>
-
-    <% end %>
 
     <br \>
+-->
 
     <h4><%= link_to "Back to Dashboard", root_path %></h4>
 
@@ -146,6 +160,5 @@
 
 	<!-- <a class="fix-me button" href="">Hello</a>  2 classes, fixme & button --> 
 
-	<div style="margin-top:500px;"></div>
 </body>
 </html>

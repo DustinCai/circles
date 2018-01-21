@@ -9,4 +9,9 @@ class EventsController < ApplicationController
     params.require(:event).permit(:title, :description, :event_type, :time)
   end
 
+  def destroy
+    Event.find(params[:id]).destroy
+    redirect_to circle_path(params[:circle_id])
+  end
+
 end
