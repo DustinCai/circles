@@ -5,8 +5,6 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    if 
-    end
     @user = current_user 
   end
 
@@ -27,6 +25,7 @@ class UsersController < ApplicationController
     if not current_circle
       # The circle does not exist
       redirect_back fallback_location: root_path and return
+    end
 
     return current_circle.users.include? current_user
   end
