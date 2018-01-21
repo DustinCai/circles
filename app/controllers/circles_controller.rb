@@ -5,6 +5,7 @@ class CirclesController < ApplicationController
 
   def show
     @user = current_user
+    @new_event = Event.new
     @circle = current_circle
 
     if not in_circle?

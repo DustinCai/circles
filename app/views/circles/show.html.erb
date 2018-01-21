@@ -1,3 +1,17 @@
 <% @events.each do |event| %>
   <%= event.title %>
 <% end %>
+
+<%= form_for @new_event do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, class: "form-control" %>
+
+  <%= f.label :type %>
+  <%= f.select :type, options_for_select(Event.options_for_type), {}, class: "form-control" %>
+
+ <%= f.submit %>
+
+<% end %>
