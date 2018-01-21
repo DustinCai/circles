@@ -41,7 +41,7 @@ class Circle < ApplicationRecord
   end
 
   def self.get_subject(val)
-    options_for_subject[val + 1][1]
+    options_for_subject[val.to_i + 1][1]
   end
 
 end

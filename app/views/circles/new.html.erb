@@ -6,7 +6,7 @@
   <br \>
 
   <p>What subject will you be studying?</p>
-  <p><%= f.select :subject, options_for_select(Circle.subject_mapping) %></p>
+  <p><%= f.select :subject, options_for_select(Circle.options_for_subject) %></p>
   <br \>
 
   <p>What is the maximum number of people in the circle? (optional)</p>
