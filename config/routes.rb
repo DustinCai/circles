@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   end
 
   resources :events
-  end
 
   authenticated :user do
     root 'users#dashboard'

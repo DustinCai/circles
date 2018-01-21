@@ -10,6 +10,7 @@ class Circle < ApplicationRecord
   filterrific(
     default_filter_params: {circle_size: 4},
     available_filters: [
+      :circle_id,
       :name_query,
       :subject_query,
       :circle_size
@@ -34,6 +35,10 @@ class Circle < ApplicationRecord
 
   scope :circle_size, lambda { |query|
     where(size: query)
+  }
+
+  scope :circle_id, lambda { |query|
+    where(id: query)
   }
 
   def self.options_for_subject
