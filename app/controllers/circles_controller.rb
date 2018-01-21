@@ -9,7 +9,7 @@ class CirclesController < ApplicationController
       circle = Circle.new(group_params)
       if circle.save
         current_user.circles << circle
-        redirect_to root_path
+        redirect_to circle_path(circle.id)
       else
         flash[:alert] = circle.errors
         redirect_to new_circle_path
@@ -28,7 +28,7 @@ class CirclesController < ApplicationController
     if not in_circle?
       redirect_to root_path or return
     end
-    @events = @circle.events
+    @events = @circle.events.order :time
     @users = @circle.users
   end
 
@@ -52,6 +52,9 @@ class CirclesController < ApplicationController
     # There is an issue with the persisted param_set. Reset it.
     puts "Had to reset filterrific params: #{ e.message }"
     redirect_to(reset_filterrific_url(format: :html)) and return
+  end
+
+  def create_event
   end
 
   def in_circle?

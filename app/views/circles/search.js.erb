@@ -1,0 +1,4 @@
+<% js = escape_javascript(
+  render(partial: 'circles/search_circles_list', locals: { circles: @circles })
+) %>
+$("#filterrific_results").html("<%= js %>");

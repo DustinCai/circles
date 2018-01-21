@@ -1,0 +1,9 @@
+<ul>
+<% @circles.each do |circle| %>
+  <li class="circle-result">
+    <h3><%= link_to circle.name, circle_path(circle) %></h3>
+    <p><%= Circle.get_subject circle.subject %></p>
+    <p><%= circle.size %></p>
+  </li>
+<% end %>
+</ul>
