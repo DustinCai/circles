@@ -1,35 +1,151 @@
-<h1><%= @circle.name %></h1>
-<br \>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Cheat Sheet</title>
+	<link rel="stylesheet" type="text/css" href="css/circlestyle.css"> <!-- use css/style.css cause you have to specify the folder -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+">
+</head>
+<body>
+	<div class= "container">
+		<div class= "box-1">
+			<!-- <h1 style = "color: red">Hello World</h1> BAD dont do this -->
+      <h1><%= @circle.name %></h1>
+			<p>
+				
+			</p>
+		</div>
 
-<h2>Events</h2>
-<br \>
-<% @events.each do |event| %>
-  <h3><%= Event.get_event_type event.event_type %>: <%= event.title %></h3>
-  <p><%= event.time.to_date %></p>
-  <p><%= event.description %></p>
-  <br \>
-<% end %>
+		<div class= "box-2">
+      <% @events.each do |event| %>
+        <div class="event">
+          <h3><%= Event.get_event_type event.event_type %>: <%= event.title %></h3>
+          <p><%= event.time.to_date %></p>
+          <p><%= event.description %></p>
+        </div>
+      <% end %>
+		</div> 
 
-<h3>Add Event</h3>
-<%= form_for [@circle, @new_event] do |f| %>
-  <p><%= f.label :title %>
-  <%= f.text_field :title, class: "form-control" %></p>
+		<!-- call grid somewhere here lmao -->
+		
+<div class="container-fluid">
+  <h1></h1>
+  <div class="row">
+    <div class="col-md-4" style="background-color:lavender;">
+    <div class="resources">
+					<h3>Resources</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					</p>
+				</div>
 
-  <p><%= f.label :description %>
-  <%= f.text_field :description, class: "form-control" %></p>
+				<div class="clr"></div>
 
-  <p>Date
-  <%= f.date_select :time %></p>
+				<div class="members">
+					<h3>Members</h3>
+          <ul>
+            <% @circle.users.each do |user| %>
+              <li><%= user.first_name.upcase_first %> <%= user.last_name.upcase_first %></li>
+            <% end %>
+          </ul>
+				</div>	
+    </div>
+    <div class="col-md-8" style="background-color:lavenderblush;">
+    <div class="p-box">
+			<h1>Hello
+            hello 
+            hello</h1>
+		</div>
+    </div>
 
-  <p><%= f.label :event_type %>
-  <%= f.select :event_type, options_for_select(Event.options_for_type), {}, class: "form-control" %></p>
+</div>
 
-  <p><%= f.submit  %></p>
+		
 
-<% end %>
+		<div class="clr"></div>
 
-<br \>
+		<!-- 
+		<div id="main-block">
+			<h3>Hi</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			</p>
+		</div>
 
-<h4><%= link_to "Back to Dashboard", root_path %></h4>
+		
+		 <div id="sidebar">
+			<p>Lorem ipsum sdolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			</p>
+		</div> 
 
-<h4><%= link_to "Leave Circle", leave_circle_user_path(@circle),  method: :post %>
+		<div class="clr"></div> 
+
+		<div class="catergories">
+			<h2>Categories</h2>
+			<ul>
+				<li><a href="#">Catergory 1</a></li>
+				<li><a href="#">Catergory 2</a></li>
+				<li><a href="#">Catergory 3</a></li>
+				<li><a href="#">Catergory 4</a></li>
+			</ul>
+
+		</div>
+	-->
+
+		<form class="my-form">
+			<div class="form-group">
+				<label>Name: </label>
+				<input type="text" name="name">
+			</div>
+			<div class="form-group">
+				<label>Email: </label>
+				<input type="text" name="email">
+			</div>
+			<div class="form-group">
+				<label>Message: </label>
+				<textarea name="message"></textarea>
+			</div>
+			<input type="button" name="submit" value="Submit">
+		</form>
+
+    <h3>Add Event</h3>
+    <%= form_for [@circle, @new_event] do |f| %>
+      <p><%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %></p>
+
+      <p><%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %></p>
+
+      <p>Date
+      <%= f.date_select :time %></p>
+
+      <p><%= f.label :event_type %>
+      <%= f.select :event_type, options_for_select(Event.options_for_type), {}, class: "form-control" %></p>
+
+      <p><%= f.submit  %></p>
+
+    <% end %>
+
+    <br \>
+
+    <h4><%= link_to "Back to Dashboard", root_path %></h4>
+
+    <h4><%= link_to "Leave Circle", leave_circle_user_path(@circle),  method: :post %>
+
+
+
+		
+
+		<!-- <ul class="my-list">
+			<li>List Item</li>
+			<li>List Item</li>
+			<li>List Item</li>
+			<li>List Item</li>
+			<li>List Item</li>
+			<li>List Item</li>
+		</ul> -->
+	</div> <!-- ./container -->
+
+	<!-- <a class="fix-me button" href="">Hello</a>  2 classes, fixme & button --> 
+
+	<div style="margin-top:500px;"></div>
+</body>
+</html>
