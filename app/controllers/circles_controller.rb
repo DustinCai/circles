@@ -9,7 +9,7 @@ class CirclesController < ApplicationController
       circle = Circle.new(group_params)
       if circle.save
         current_user.circles << circle
-        redirect_to root_path
+        redirect_to circle_path(circle.id)
       else
         flash[:alert] = circle.errors
         redirect_to new_circle_path
@@ -28,9 +28,12 @@ class CirclesController < ApplicationController
     if not in_circle?
       redirect_to root_path and return
     end
-    @events = @circle.events
+    @events = @circle.events.order :time
     @users = @circle.users
 
+  end
+
+  def create_event
   end
 
   def in_circle?
@@ -45,4 +48,5 @@ class CirclesController < ApplicationController
   def current_circle
     Circle.find(params[:id])
   end
+
 end

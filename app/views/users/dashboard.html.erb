@@ -3,7 +3,7 @@
 <h3>My Circles<h3>
 
 <% @user.circles.each do |circle| %>
-    <%= link_to circle.name, circle_path(circle) %>
+  <p><%= link_to circle.name, circle_path(circle) %></p>
 <% end %>
 
 <p><%= link_to "Create Circle", new_circle_path %></p>
