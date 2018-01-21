@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :events, only: [:create, :destroy, :update]
   end
 
-  resources :events
+  resources :events do
   end
 
   authenticated :user do
