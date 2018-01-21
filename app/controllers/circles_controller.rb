@@ -26,11 +26,32 @@ class CirclesController < ApplicationController
     @circle = current_circle
 
     if not in_circle?
-      redirect_to root_path and return
+      redirect_to root_path or return
     end
     @events = @circle.events
     @users = @circle.users
+  end
 
+  def search
+    @filterrific = initialize_filterrific(
+      Circle,
+      params[:filterrific],
+      select_options: {
+        subject_query: Circle.options_for_subject
+      }
+    ) or return
+    
+    @circles = @filterrific.find
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+  rescue ActiveRecord::RecordNotFound => e
+    # There is an issue with the persisted param_set. Reset it.
+    puts "Had to reset filterrific params: #{ e.message }"
+    redirect_to(reset_filterrific_url(format: :html)) and return
   end
 
   def in_circle?
@@ -43,6 +64,7 @@ class CirclesController < ApplicationController
   end
 
   def current_circle
-    Circle.find(params[:id])
+    Circle.find(params[:id]) rescue false
   end
+
 end

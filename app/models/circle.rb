@@ -7,7 +7,41 @@ class Circle < ApplicationRecord
   validates :subject, presence: true, numericality: {greater_than: 0}
   validates :size, presence: true, numericality: {greater_than: 1, less_than: 100, only_integer: true}
 
-  def self.subject_mapping
+  filterrific(
+    default_filter_params: {circle_size: 4},
+    available_filters: [
+      :name_query,
+      :subject_query,
+      :circle_size
+    ]
+  )
+  
+  scope :name_query, lambda { |query| 
+    return nil if query.blank?
+
+    query = query.to_s.downcase
+    query = ('%' + query.gsub('*', '%') + '%').gsub(/%+/, '%')
+    where( "(LOWER(circles.name) LIKE ?)", query)
+  }
+
+  scope :subject_query, lambda { |query| 
+    return nil if query.blank?
+
+    query = query.to_s.downcase
+    query = ('%' + query.gsub('*', '%') + '%').gsub(/%+/, '%')
+    where( "(LOWER(circles.name) LIKE ?)", query)
+  }
+
+  scope :circle_size, lambda { |query|
+    where(size: query)
+  }
+
+  def self.options_for_subject
     [["Math", 1], ["Biology", 2], ["Chemistry", 3], ["Physics", 4]]
   end
+
+  def self.get_subject(val)
+    options_for_subject[val + 1][1]
+  end
+
 end
