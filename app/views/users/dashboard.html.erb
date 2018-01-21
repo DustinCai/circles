@@ -1,10 +1,9 @@
-<!--Variables:
-        @user.circles
-    -->
+<h1>Dashboard</h1>
 
-<%= @user.circles.first.name %>
+<h3>My Circles<h3>
 
 <% @user.circles.each do |circle| %>
-    <%= link_to "circle", circles_path(circle) %>
+    <%= link_to circle.name, circle_path(circle) %>
 <% end %>
 
+<p><%= link_to "Create Circle", new_circle_path %></p>

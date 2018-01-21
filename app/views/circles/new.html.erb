@@ -1,0 +1,24 @@
+<h1>Create a circle!</h1>
+
+<%= form_for @circle do |f| %>
+  <p>What is the name of your new circle?</p>
+  <p><%= f.text_field :name %></p>
+  <br \>
+
+  <p>What subject will you be studying?</p>
+  <p><%= f.select :subject, options_for_select(Circle.subject_mapping) %></p>
+  <br \>
+
+  <p>What is the maximum number of people in the circle? (optional)</p>
+  <p><%= f.text_field :size %></p>
+  <br \>
+
+  <p>Do you want to make the circle public?</p>
+  <p><%= f.radio_button :status, 0 %>
+  <%= f.label :status, 'Yes, make it public.', :value => 0 %></p>
+  <p><%= f.radio_button :status, 1 %>
+  <%= f.label :status, 'No, make it invite-only.', :value => 1 %></p>
+  <br \>
+
+  <%= f.submit %>
+<% end %>
